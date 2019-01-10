@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { 
     View,
     Text,
+    TouchableOpacity,
     Clipboard,
     StatusBar,
     StyleSheet
@@ -13,8 +14,6 @@ import AsciiFacesData from '../data/ascii-faces-data.json';
 import { SearchBar } from 'react-native-elements';
 import DropdownAlert from 'react-native-dropdownalert';
 import Collapsible from 'react-native-collapsible-header';
-import TouchableBounce from 'react-native/Libraries/Components/Touchable/TouchableBounce';
-
 import { responsiveFontSize, responsiveHeight, responsiveWidth} from 'react-native-responsive-dimensions';
 
 const { primaryThemeColor, primaryBackgroundColor } = AppStyle;
@@ -43,9 +42,9 @@ class MainScreen extends Component {
         let { art } = ascii;
 
         return (
-            <TouchableBounce onPress={() => this._copyToClipboard(art)} style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(20), padding: 4, borderRadius: 10, backgroundColor: primaryThemeColor }}>
+            <TouchableOpacity onPress={() => this._copyToClipboard(art)} style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(20), padding: 4, borderRadius: 10, backgroundColor: primaryThemeColor }}>
                 <Text style={{ color: '#FFF', fontSize: responsiveFontSize(3.60) }}>{art}</Text>
-            </TouchableBounce>
+            </TouchableOpacity>
         );
     };
 
