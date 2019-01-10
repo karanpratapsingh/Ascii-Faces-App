@@ -26,7 +26,9 @@ export default class App extends React.Component {
 
     this.setState({ ...this.state, isFontLoaded: true });
 
-    SplashScreen.hide();
+    setTimeout(() => {
+      SplashScreen.hide();      
+    }, 500);
   };
 
   render() {
