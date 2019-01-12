@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "the-asciifacesapp-project",
+    "name": "Ascii Faces",
     "slug": "the-asciifacesapp-project",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -22,8 +22,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.asciifaces.app"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.asciifaces.app"
     }
   }
 }
