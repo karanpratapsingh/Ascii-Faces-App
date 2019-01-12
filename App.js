@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import { Font, SplashScreen } from 'expo';
 import AppContainer from './src/navigation/App.Navigation';
 
@@ -14,6 +14,7 @@ export default class App extends React.Component {
       isFontLoaded: false
     };
 
+    StatusBar.setBarStyle('light-content');
     SplashScreen.preventAutoHide();
   };
 
