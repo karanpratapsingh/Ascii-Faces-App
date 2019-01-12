@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { 
     View,
     Text,
-    TouchableOpacity,
     Clipboard,
     StatusBar,
-    StyleSheet
+    StyleSheet,
+    Platform,
+    TouchableOpacity
 } from 'react-native';
 import { Constants } from 'expo';
 import AppStyle from '../styles/AppStyles';
@@ -43,7 +44,7 @@ class MainScreen extends Component {
 
         return (
             <TouchableOpacity onPress={() => this._copyToClipboard(art)} style={{ alignItems: 'center', justifyContent: 'center', height: responsiveHeight(20), padding: 4, borderRadius: 10, backgroundColor: primaryThemeColor }}>
-                <Text style={{ color: '#FFF', fontSize: responsiveFontSize(3.60) }}>{art}</Text>
+                <Text style={{ color: '#FFF', fontSize: Platform.OS === 'ios' ? responsiveFontSize(3.60) : responsiveFontSize(3.20) }}>{art}</Text>
             </TouchableOpacity>
         );
     };
@@ -74,8 +75,9 @@ class MainScreen extends Component {
                 <Collapsible
                     backgroundColor={primaryBackgroundColor}
                     min={Constants.statusBarHeight}
-                    max={responsiveHeight(10)}
+                    max={Platform.OS === 'ios' ? responsiveHeight(10) : responsiveHeight(12)}
                     renderHeader={
+
                         <View style={{ flex: 1, backgroundColor: primaryBackgroundColor, flexDirection: 'row' }}>
 
                             <SearchBar
@@ -85,7 +87,7 @@ class MainScreen extends Component {
                                 value={this.state.searchQuery}
                                 onChangeText={this._handleSearch}
                                 cancelButtonTitle={'cancel'}
-                                clearIcon={{ name: 'cancel', color: '#FFF', style: { fontSize: 24, marginTop: responsiveHeight(0.8) } }}
+                                clearIcon={{ name: 'cancel', color: '#FFF', style: { fontSize: 24, marginTop: Platform.OS === 'ios' ? responsiveHeight(0.80) : responsiveHeight(1.2) } }}
                                 cancelButtonTitle={'Cancel'}
                                 containerStyle={{
 
@@ -99,31 +101,31 @@ class MainScreen extends Component {
                                 inputStyle={{ 
                                     
                                     color: '#FFF',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
                                     fontFamily: 'Airbnb-Cereal',
-                                    padding: responsiveHeight(1.00),
-                                    fontSize: responsiveFontSize(4.80),
+                                    padding: Platform.OS === 'ios' ? responsiveHeight(1.00) : 0,
+                                    fontSize: Platform.OS === 'ios' ? responsiveFontSize(4.80) : responsiveFontSize(4.00),
                                     backgroundColor: primaryThemeColor, 
-                                    height: responsiveHeight(8)
+                                    height: Platform.OS === 'ios' ? responsiveHeight(8) : responsiveHeight(8)
                                 }}
                                 placeholder={'Search...'} />                        
                         </View>
                     }
 
                     renderContent={
-
                         
                         <React.Fragment>
-
                             {
                                 filteredAsciiFacesData.length === 0 ? (
                                     <View style={{ alignItems: 'center', backgroundColor: 'transparent', paddingTop: responsiveHeight(5) }}>
-                                        <Text style={{ color: '#FFF', fontSize: responsiveFontSize(4.00), fontFamily: 'Airbnb-Cereal' }}>No art found</Text>
+                                        <Text style={{ color: '#FFF', fontSize: Platform.OS === 'ios' ? responsiveFontSize(4.00) : responsiveFontSize(3.60), fontFamily: 'Airbnb-Cereal' }}>No art found</Text>
                                     </View>
                                 ) : (
                                     <GridView
                                         items={filteredAsciiFacesData}
                                         spacing={16}
-                                        itemDimension={responsiveHeight(24)}
+                                        itemDimension={responsiveHeight(20)}
                                         style={{ backgroundColor: primaryBackgroundColor }}
                                         renderItem={ascii => this._renderList(ascii)}
                                     />
@@ -137,6 +139,7 @@ class MainScreen extends Component {
                     closeInterval={1000} ref={ref => this.dropdown = ref}
                     inactiveStatusBarStyle={'light-content'}
                     successImageSrc={'https://png.icons8.com/copy/FFFFFF'}
+                    defaultContainer={{ padding: 8, flexDirection: 'row', marginTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}
                     titleStyle={{ fontSize: 20, textAlign: 'left', color: 'white', fontFamily: 'Airbnb-Cereal', backgroundColor: 'transparent' }} 
                     messageStyle={{ fontSize: 16, textAlign: 'left', color: 'white', fontFamily: 'Airbnb-Cereal', backgroundColor: 'transparent' }} />
             </View>
