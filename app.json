@@ -28,6 +28,8 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.asciifaces.app"
-    }
+    },
+    "description": "A simple React Native powered app for ASCII image art to make your conversations interesting.",
+    "githubUrl": "https://github.com/karanpratapsingh/the-asciifacesapp-project"
   }
 }

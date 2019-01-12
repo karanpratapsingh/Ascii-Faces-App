@@ -16,7 +16,7 @@
  
 ### Download (Android) : 
 
-[![Download-Android](http://www.atteztech.com/images/ZN62/10.19/android-app-on-google-play.jpg)](https://play.google.com/store/apps/details?id= "Download-Android")
+[![Download-Android](http://www.atteztech.com/images/ZN62/10.19/android-app-on-google-play.jpg)](https://play.google.com/store/apps/details?id=com.asciifaces.app "Download-Android")
 
 ### View on Expo via QR Code: (click below)
 
