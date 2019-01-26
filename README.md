@@ -1,5 +1,5 @@
 ## The-AsciiFacesApp-Project
-#### A simple React Native powered app for ASCII image art to make your conversations interesting.
+#### A simple React Native powered app for ASCII emojis to make your conversations interesting.
 
 ### Technologies used : 
 
